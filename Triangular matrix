@@ -1,0 +1,37 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static void sum(int mat[][],int r,int c){
+        int i,j;
+        int upper_sum=0;
+        int lower_sum=0;
+        for(i=0;i<r;i++)
+        for(j=0;j<c;j++){
+            if(i<=j){
+                upper_sum +=mat[i][j];
+            }
+        }
+        System.out.print(upper_sum +" ");
+        for(i=0;i<r;i++)
+        for(j=0;j<c;j++){
+            if(j<=i){
+                lower_sum +=mat[i][j];
+            }
+        }
+        System.out.print(lower_sum);
+    }
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        int arr[][]=new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        sum(arr,n,n);
+    }
+}
