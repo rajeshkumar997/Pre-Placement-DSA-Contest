@@ -1,0 +1,44 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static boolean passAll(int x, int b[]){
+        int energy= x;
+        int n=b.length;
+        for(int i=0; i<n; i++){
+            energy+=energy-b[i];
+            if(energy>=100000)
+            return true;
+            if(energy<0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+       int r=0;
+       int b[]= new int[n];
+       for(int i=0; i<n; i++){
+           b[i]=sc.nextInt();
+           if(b[i]>r){
+               r=b[i];
+           }
+       }
+       int l=0, res=0;
+       while(l<=r){
+           int m=l+(r-l)/2;
+           if(passAll(m,b)){
+               r=m-1;
+               res=m;
+           }else{
+               l=m+1;
+           }
+       }
+       System.out.println(res);
+    }
+}
