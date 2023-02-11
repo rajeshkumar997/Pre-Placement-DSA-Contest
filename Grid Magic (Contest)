@@ -1,0 +1,47 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc =new Scanner(System.in);
+        int n = sc.nextInt();
+        char array[][] = new char[n][n];
+        for(int i=0;i<n;i++){
+            array[i] =sc.next().toCharArray();
+        }
+        char d = array[0][0];
+        char nd = '0';
+        boolean magic = true;
+        for(int i =0;i<n;i++){
+            for(int j =0;j<n;j++){
+                if(i==j || i==n-j-1){
+                    if(array[i][j]!=d){
+                        magic = false;
+                        break;
+                    }
+                }else{
+                    if(nd =='0'){
+                        nd = array[i][j];
+                    }else if(array[i][j]!= nd){
+                        magic = false;
+                        break;
+                    }
+                }
+            }
+            if(!magic){
+                break;
+            }
+        }
+        if(d == nd){
+            magic = false;
+        }
+        if(magic){
+            System.out.print("YES");
+            }else{
+                System.out.print("NO");
+            }
+    }
+}
